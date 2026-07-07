@@ -1,3 +1,5 @@
+package main
+
 // Nodo representa un elemento de la pila
 type Nodo struct {
 	Valor     interface{} // Puede almacenar cualquier tipo
