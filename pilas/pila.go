@@ -3,48 +3,27 @@ package main
 import "fmt"
 
 type Pila struct {
-	tope    *Nodo
-	tamanio int
+	tope   *Nodo
+	tamaño int
 }
 
-func PilaNueva() *Pila {
-	return &Pila{
-		tope:    nil,
-		tamanio: 0,
-	}
-}
+//PUSH
 
-// Push agrega un elemento al tope de la pila
 func (p *Pila) Push(valor interface{}) {
 	nuevoNodo := NuevoNodo(valor)
 	nuevoNodo.Siguiente = p.tope
 	p.tope = nuevoNodo
-	p.tamanio++
+	p.tamaño++
 }
 
-// Pop elimina y retorna el elemento del tope
+//POP
+
 func (pila *Pila) Pop() (interface{}, error) {
 	if pila.EstaVacia() {
-		return nil, fmt.Errorf("error: pila vacía")
+		return nil, fmt.Errorf("la pila está vacía")
 	}
-
-	valor := pila.tope.Valor
-	pila.tope = pila.tope.Siguiente
-	pila.tamanio--
-
-	return valor, nil
 }
 
-// Peek retorna el elemento del tope sin eliminarlo
-func (pila *Pila) Peek() (interface{}, error) {
-	if pila.EstaVacia() {
-		return nil, fmt.Errorf("error: pila vacía")
-	}
-
-	return pila.tope.Valor, nil
-}
-
-// EstaVacia verifica si la pila está vacía
 func (pila *Pila) EstaVacia() bool {
 	return pila.tope == nil
 }
