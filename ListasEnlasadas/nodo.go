@@ -2,5 +2,5 @@ package main
 
 type Nodo struct {
 	Valor     int
-	Siguiente *Nodo
+	Siguiente *Nodo //puerto al siguiente
 }
